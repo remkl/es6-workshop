@@ -2,7 +2,7 @@
 ES2015+ is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax.
 
 
-### Modules
+## Modules
 
 For a long time Javascript did not have a module system, something that is standard in other programming languages like Java and Python.
 
@@ -36,16 +36,17 @@ There are two main types of exports: named and default.
 
 Named exports export single entities from a particular module.
 ```js
+// export.js
 export config = {
   key: '123'
 }
-
 export function1 () {}
 
 export const function2 = () => {}
 
 ...
 
+// import.js
 import { config, function1 } from './file'
 import { function2 as anotherName } from './file'
 import * as obj from './file'
@@ -56,6 +57,7 @@ obj.function2()
 Default exports are for exporting a single entity from a module.
 You can alias a default export as any other name when importing it.
 ```js
+  // export.js
   export default () => {
     return 42
   }
@@ -65,7 +67,7 @@ You can alias a default export as any other name when importing it.
   }
 
   ...
-
+  // import.js
   import DefaultExport from './file'
   import Example from './file'
 ```
@@ -76,7 +78,8 @@ import React, { Component } from 'react'
 ```
 (React is the default export, where Component is a named export, both from the same module)
 
-### Arrow Functions
+
+## Arrow Functions
 The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` in Javascript.
 
 Arrow functions by default inherit the surrounding ```this``` context.
@@ -120,7 +123,7 @@ weather.updateWeather() // returns different value when accessing weather.curren
 
 Gotcha
 ```js
-  const person = {
+  const person = {``
     firstName: 'John',
     getName: () => {
       return this.firstName

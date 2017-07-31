@@ -2,7 +2,7 @@
 ES2015+ is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax.
 
 
-## Modules
+# Modules
 
 For a long time Javascript did not have a module system, something that is standard in other programming languages like Java and Python.
 
@@ -79,7 +79,7 @@ import React, { Component } from 'react'
 (React is the default export, where Component is a named export, both from the same module)
 
 
-## Arrow Functions
+# Arrow Functions
 The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` in Javascript.
 
 Arrow functions by default inherit the surrounding ```this``` context.

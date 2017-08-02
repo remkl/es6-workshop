@@ -93,8 +93,8 @@ const person = {
   }
 }
 person.getName() // undefined
-
-// because 'this' inherits from the surrounding context, which isn't the person object (Javascript is function scoped) but the global window scope, where firstName isn't a property of the global scope, thus undefined.
+// because 'this' inherits from the surrounding context, which isn't the person object
+// (Javascript is function scoped) but the global window scope, where firstName isn't a property of the global scope, thus undefined.
 
 const weather = {
   currentTemp: 42,
@@ -105,7 +105,8 @@ const weather = {
   }
 }
 weather.updateWeather() // weather.currentTemp will always return 42
-// again because arrow functions inherit 'this from the surrounding scope, even when they are nested', so the call back function tries to set window.currentTemp, which doesn't exist.
+// again because arrow functions inherit 'this from the surrounding scope,
+// even when they are nested', so the call back function tries to set window.currentTemp, which doesn't exist.
 
 const weather = {
   currentTemp: 42,
@@ -121,7 +122,7 @@ weather.updateWeather() // returns different value when accessing weather.curren
 ```
 
 
-Gotcha
+Another gotcha example
 ```js
   const person = {``
     firstName: 'John',
@@ -131,4 +132,41 @@ Gotcha
   }
   person.get() // undefined
 ```
-In this case, "this" in the getName function inherits this from the surrounding scope. Which in this case is the global window/process object.
+Its important to understand how ```this``` works in Javascript and its dynamic nature to avoid these cases when using arrow functions.
+
+# Rest / Spread Operator
+Used to gather, spread multiple elements in an array or object (Object spread is at stage 3).
+
+- Spreading:
+When ```...``` is used in front of an array it actively spreads the arrays elements one by one.
+  ```js
+  const arr1 = [1,2,3,4]
+  const arr2 = [...ar1] // [1,2,3,4]
+  ```
+  It can also be used to gather up elements together to collect the 'rest' into an array, a common use case is in function params.
+  ```js
+    function foo (x, y,...rest) {
+      // x = 1, y = 2
+      // rest = [3, 4, 5]
+    }
+    foo(1,2,3,4,5)  
+  ```
+- Object Spread
+Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object:
+```js
+  const user = {
+    userId: 321,
+    name: 'Bob'
+  }
+
+  const policy = {
+    userId: 123,
+    policyNumber: 324234
+  }
+
+  const userPolicy = {
+    ...policy,
+    ...user
+  }
+```
+Above we are creating an object literal, and 'spreading' out the keys and values from user and policy into the the new ```userPolicy``` object. Note that for duplicate keys, the last spread takes precedence, so ```userPolicy.userId // 321 ``` .

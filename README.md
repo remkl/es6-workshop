@@ -187,3 +187,46 @@ const greeting = `Hello ${firstName} ${lastName}!`
 const maths = `${1 + 2} is equal to 3` // 3 is equal to 3
 ```
 You can also create custom tagged template literals using functions (similar to how the react style-components library works), which is beyond the scope of this introduction. For more information see: <https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals>
+
+# Object Shorthands
+We also get some terser syntax for dealing with objects. One of these is the object property short-hand notation:
+```js
+var firstName = 'Alfred',
+    lastName  = 'Jenkins'
+
+// ES5
+var butler = {
+  firstName: firstName,
+  lastName: lastName
+}
+// here we just assign keys on the butler object to variables of the same name.
+
+// ES6
+const butler = {
+  firstName,
+  lastName
+}    
+// if the keys of the object match the same name as the variable, we can just reference the name once and still get the same results
+```
+Also short-hand object method notation, which looks like a regular function declaration without the function keyword:
+
+```js
+// ES5
+var butler = {
+  firstName: firstName,
+  serveFood: function() {
+    console.log('Your food is served')
+  }
+}
+
+// ES6
+const butler = {
+  firstName,
+  serveFood() {
+    console.log('Your food is serverd')
+  },
+  deployToProd() {
+    
+  }
+}
+```

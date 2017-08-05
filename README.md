@@ -134,6 +134,21 @@ Another gotcha example
 ```
 Its important to understand how ```this``` works in Javascript and its dynamic nature to avoid these cases when using arrow functions.
 
+## A note on 'this' in Javascript
+The value of ```this``` is dynamic in Javascript and always depends on how the function/method is called.
+Every function in Javascript (with the exception of Arrow Functions), while executing has a reference to its current execution context - which is what the ```this``` keyword points to.
+
+In Javascript the only thing that matters in determining what ```this``` is, is by looking at how the function is called.
+
+Four rules to help understand ```this```:
+
+1. If a function is called in the global scope, the context is the global object.
+2. If a function is called is on a object a preceding dot, the object before that dot is the context.
+3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
+4. ```this``` can be explicitly defined using call, apply and bind
+
+
+
 # Rest / Spread Operator
 Used to gather, spread multiple elements in an array or object (Object spread is at stage 3).
 
@@ -226,7 +241,7 @@ const butler = {
     console.log('Your food is serverd')
   },
   deployToProd() {
-    
+
   }
 }
 ```

@@ -16,4 +16,4 @@ function bar () {
 
 console.log(
 	bar().join("") === "281012" // join takes the elements in an array as joins them together as a string
-);
+)

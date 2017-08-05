@@ -186,3 +186,4 @@ const greeting = `Hello ${firstName} ${lastName}!`
 
 const maths = `${1 + 2} is equal to 3` // 3 is equal to 3
 ```
+You can also create custom tagged template literals using functions (similar to how the react style-components library works), which is beyond the scope of this introduction. For more information see: <https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals>

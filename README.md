@@ -152,7 +152,7 @@ When ```...``` is used in front of an array it actively spreads the arrays eleme
     foo(1,2,3,4,5)  
   ```
 - Object Spread
-Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object:
+Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object (Note is is not officially in the EcmaScript specification yet, but is at stage2 and requires transpilation):
 ```js
   const user = {
     userId: 321,
@@ -170,3 +170,19 @@ Similar to array spreading object spread works by taking the keys and values of 
   }
 ```
 Above we are creating an object literal, and 'spreading' out the keys and values from user and policy into the the new ```userPolicy``` object. Note that for duplicate keys, the last spread takes precedence, so ```userPolicy.userId // 321 ``` .
+
+# Template Strings
+In ES6 we get a nice syntax for constructing dynamic strings using the ``` ` ``` back-ticks and ``` ${} ``` as a placeholder for variables:
+```js
+// ES5
+var firstName = 'Alfred',
+    lastName  = 'Jenkins'
+
+var greeting = 'Hello ' + firstName + ' ' + lastName + '!'
+
+// ES6
+const greeting = `Hello ${firstName} ${lastName}!`
+// can also use expressions inside ${}
+
+const maths = `${1 + 2} is equal to 3` // 3 is equal to 3
+```

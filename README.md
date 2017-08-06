@@ -1,6 +1,5 @@
 # Introduction to ES6
-ES2015+ is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax.
-
+ES2015+ is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax. The examples given are of the more simplistic use-cases of the syntax, and don't go too in depth to some of the more advanced use-cases.
 
 # Modules
 
@@ -313,3 +312,32 @@ In ES5, we have to create a temporary value, and manually extract the elements w
   const [ first, second, third ] = foo()
 ```
 The two pieces of code are equivalent, ES6 just gives us this nicer, declarative syntax to extract the first three elements of the array returned by ```foo``` and assign them to the variable names: ```first```, ```second``` and ```third```
+
+Similarly we can do the same with objects.
+
+```js
+const bar = {
+  a: 1,
+  b: 2,
+  c: 3
+}
+
+const { a, b, c } = bar()
+a // 1
+b // 2
+c // 3
+```
+
+A common pattern seen in React is to destructure the arguments of a function. By default components in React are passed an object called ```props```, using destructuring we can extract each of the values in the props object:
+
+```js
+const ReactComponent = ({ children, onChange }) => { // extract props.children and props.onChange
+  return (
+    <div>
+      {children}
+    </div>
+  )
+}
+
+```
+If you try to assign more values than are present in the structure you are destructuring from, you will just get ```undefined``` when you try to reference that variable.

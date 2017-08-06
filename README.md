@@ -341,3 +341,12 @@ const ReactComponent = ({ children, onChange }) => { // extract props.children a
 
 ```
 If you try to assign more values than are present in the structure you are destructuring from, you will just get ```undefined``` when you try to reference that variable.
+
+You can also use default parameters with destructuring, so if something does come back undefined, you can make it so it always has a reasonable default value.
+
+```js
+const [first, second, third = 3] = baz()
+function baz() {
+  return [1,2]
+}
+```

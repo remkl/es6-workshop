@@ -290,3 +290,26 @@ This is just a simple example. The value of the default parameter gets evaluated
 
 
 # Array / Object Destructuring
+
+The idea behind destructuring, is to take a structure - namely an array or an object, and to de-construct it down to its constitute parts, and extract those parts out into variables.
+
+```js
+// ES5
+function foo () {
+  return [1, 2, 3]
+}
+
+var arr = foo()
+var first = arr[0]
+var second = arr[1]
+var third = arr[2]
+```
+In ES5, we have to create a temporary value, and manually extract the elements we want out from the array.
+
+```js
+// ES6
+  // still using the foo Function
+
+  const [ first, second, third ] = foo()
+```
+The two pieces of code are equivalent, ES6 just gives us this nicer, declarative syntax to extract the first three elements of the array returned by ```foo``` and assign them to the variable names: ```first```, ```second``` and ```third```

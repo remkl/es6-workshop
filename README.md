@@ -145,46 +145,8 @@ Four rules to help understand ```this```:
 1. If a function is called in the global scope, the context is the global object.
 2. If a function is called is on a object a preceding dot, the object before that dot is the context.
 3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
-4. ```this``` can be explicitly defined using call, apply and bind
+4. ```this``` can be explicitly bound using .call(), .apply() and .bind()
 
-
-
-# Rest / Spread Operator
-Used to gather, spread multiple elements in an array or object (Object spread is at stage 3).
-
-- Spreading:
-When ```...``` is used in front of an array it actively spreads the arrays elements one by one.
-  ```js
-  const arr1 = [1,2,3,4]
-  const arr2 = [...ar1] // [1,2,3,4]
-  ```
-  It can also be used to gather up elements together to collect the 'rest' into an array, a common use case is in function params.
-  ```js
-    function foo (x, y,...rest) {
-      // x = 1, y = 2
-      // rest = [3, 4, 5]
-    }
-    foo(1,2,3,4,5)  
-  ```
-- Object Spread
-Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object (Note is is not officially in the EcmaScript specification yet, but is at stage2 and requires transpilation):
-```js
-  const user = {
-    userId: 321,
-    name: 'Bob'
-  }
-
-  const policy = {
-    userId: 123,
-    policyNumber: 324234
-  }
-
-  const userPolicy = {
-    ...policy,
-    ...user
-  }
-```
-Above we are creating an object literal, and 'spreading' out the keys and values from user and policy into the the new ```userPolicy``` object. Note that for duplicate keys, the last spread takes precedence, so ```userPolicy.userId // 321 ``` .
 
 # Template Strings
 In ES6 we get a nice syntax for constructing dynamic strings using the ``` ` ``` back-ticks and ``` ${} ``` as a placeholder for variables:
@@ -245,3 +207,86 @@ const butler = {
   }
 }
 ```
+Objects in ES6 also get a new computed-property feature. This means you can reference an expression as a key to an object, which evaluates to a given key on the object:
+
+```js
+const foo = 'foo'
+
+const computed = {
+  [1+2+3]: 'six',
+  [foo + 'bar']: 'Hello world'
+}
+
+computed['6'] // six
+computed['foobar'] // Hell world
+
+```
+
+
+# Rest / Spread Operator
+Used to gather, spread multiple elements in an array or object (Object spread is at stage 3).
+
+- Spreading:
+When ```...``` is used in front of an array it actively spreads the arrays elements one by one.
+  ```js
+  const arr1 = [1,2,3,4]
+  const arr2 = [...ar1] // [1,2,3,4]
+  ```
+  It can also be used to gather up elements together to collect the 'rest' into an array, a common use case is in function params.
+  ```js
+    function foo (x, y,...rest) {
+      // x = 1, y = 2
+      // rest = [3, 4, 5]
+    }
+    foo(1,2,3,4,5)  
+  ```
+- Object Spread
+Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object (Note is is not officially in the EcmaScript specification yet, but is at stage2 and requires transpilation):
+```js
+  const user = {
+    userId: 321,
+    name: 'Bob'
+  }
+
+  const policy = {
+    userId: 123,
+    policyNumber: 324234
+  }
+
+  const userPolicy = {
+    ...policy,
+    ...user
+  }
+```
+Above we are creating an object literal, and 'spreading' out the keys and values from user and policy into the the new ```userPolicy``` object. Note that for duplicate keys, the last spread takes precedence, so ```userPolicy.userId // 321 ``` .
+
+# Default Function Parameters
+Unused parameters in Javascript functions default to undefined. A useful pattern is to set a default value in the case that no value was passed into the function.
+
+```js
+foo(1)
+function foo(a, b) {
+  b // undefined
+}
+```
+
+A common pattern in ES5 code is to do some manual checking to check whether the param is exists or not
+
+```js
+times(1)
+// ES5
+function times(a, b) {
+  b = (typeof b !== 'undefined') ? b : 1
+  return a * b
+}
+
+// ES6
+function times(a, b = 1) {
+  return a * b
+}
+```
+
+This is just a simple example. The value of the default parameter gets evaluated at call time, so you can assign it to an existing variable or to the result of a function call that returns a value for example.
+
+
+# Array / Object Destructuring

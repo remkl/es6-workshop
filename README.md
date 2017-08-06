@@ -56,19 +56,20 @@ obj.function2()
 Default exports are for exporting a single entity from a module.
 You can alias a default export as any other name when importing it.
 ```js
-  // export.js
+  // export1.js
   export default () => {
     return 42
   }
 
+  // export2.js
   export default class Example {
     ...
   }
 
   ...
   // import.js
-  import DefaultExport from './file'
-  import Example from './file'
+  import DefaultExport from './export1'
+  import Example from './export2'
 ```
 
 When importing ES6 modules, you can mix default export and named exports together:

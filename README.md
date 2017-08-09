@@ -1,9 +1,9 @@
 # Introduction to ES6
-ES2015+ is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax. The examples given are of the more simplistic use-cases of the syntax, and don't go too in depth to some of the more advanced use-cases.
+ES2015 also known as ES6 is a major update to the Javascript language. This repo is a high level overview of some of its prominent features and syntax.
 
 # Modules
 
-For a long time Javascript did not have a module system, something that is standard in other programming languages like Java and Python.
+For a long time Javascript did not have a module system, something that comes standard in other programming languages like Java and Python.
 
 The lack of a default module system in javascript lead to a number of community-driven solutions:
 
@@ -26,12 +26,12 @@ require(['person'], function(person) {
 })
 ```
 
-- UMD (Attempt to mash CommonJS and AMD module solutions together, didn't really catch on compared to others)
+- UMD (Universal Module Definition, an attempt to mash CommonJS and AMD module solutions together)
 
 
 #### ES6 Modules
 
-There are two main types of exports: named and default.
+ES6 modules have two main types of import/export: named and default.
 
 Named exports export single entities from a particular module.
 ```js
@@ -42,7 +42,6 @@ export config = {
 export function1 () {}
 
 export const function2 = () => {}
-
 ...
 
 // import.js
@@ -77,6 +76,7 @@ When importing ES6 modules, you can mix default export and named exports togethe
 import React, { Component } from 'react'
 ```
 (React is the default export, where Component is a named export, both from the same module)
+For more information check out MDN: [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
 
 # Arrow Functions

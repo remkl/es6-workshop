@@ -1,62 +1,89 @@
 // Arrow functions provide a short, terser sytnax used to replace the 'function' keyword
 // Arrow functions are anonymous functions
 
-// simple example
-var foo = function() {}
-function foo () {}
+// Simple example
+var hello = function hey () {}
+const hey = () => {}
 
-const foo = () => {}
-
-
-
+// Returning values
+const hey = () => '42'
 
 
 
-// returning value
-function returnVal() {
-	return 'hey'
+// Returning objects
+
+
+// Single params
+
+
+// ** Useful scenarios
+// callbacks
+
+
+
+
+
+
+var variable = 'lol'
+
+function foo() {
+	return this.variable
 }
-const returVal = () => {
-	return 'hey'
+
+const object = {
+	variable: variable,
+	foo: foo
 }
-const returnNum = () => 'hey' // Arrow functions without the {} after the => have an implicit return
 
 
 
 
-function returnObj(arg) {
-	return { key: arg }
+function Person(name) {
+	this.name = name
+	this.variable = 'Not lol'
 }
-const returnObj = (arg) => ({ key: arg }) // Arrow functions that implicitly return an object need to be wrapped in (). const returnObj = (arg) => {key: arg} is invalid because JavaScript thinks {} is the start of the function body, rather than an object literal
 
-const returnObj = arg => ({ key: arg }) // when we only have 1 argument, we can ommit the ()
-
+const dickon = new Person('dickon')
 
 
-// Useful scenarios
-  // Callbacks
-promise.then(function(val)
-  { return val }
-)
-  // vs
-promise.then(val => val)
 
-// Maintaining the value of 'this' - Arrow functions do not get a 'this', and get the surrounding lexical 'this'j
+console.log(foo.call(object))
+
+
+this.method = this.method.bind(this)
+
+
+
+
+// Maintaining the value of 'this' - Arrow functions get their 'this', from the surrounding lexical 'this'
 var person = {
-  id: 123,
-  getId: function() {
-    setTimeout(function() {
-      return this.id       // this is not pointing to person, but to the global object
-    }, 100)
-  }
+	id: 123,
+	getId: function() {
+		setTimeout(function() {
+			return this.id // this is not pointing to person, but to the global object
+		}, 100)
+	}
+}
+
+
+var person = {
+	id: 123,
+	getId: function() {
+		var self = this
+		setTimeout(function() {
+			return self.id
+		}, 100)
+	}
 }
 
 var person = {
-  id: 123,
-  getId: function() {
-    var self = this
-    setTimeout(() => {
-      self.id       // this is not pointing to person, but to the global object
-    }, 100)
-  }
+	id: 123,
+	getId: function() {
+		setTimeout(() => {
+			return this.id
+		}, 100)
+	}
 }
+
+
+// this in javascript

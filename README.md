@@ -139,10 +139,10 @@ const greeting = `Hello ${firstName} ${lastName}!`
 
 const maths = `${1 + 2} is equal to 3` // 3 is equal to 3
 ```
-You can also create custom tagged template literals using functions (similar to how the react style-components library works), which is beyond the scope of this introduction. For more information see: <https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals>
+You can also create custom tagged template literals using functions (similar to how the react style-components library works), which is beyond the scope of this introduction. For more information see [Template Literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)
 
 # Object Shorthands
-We also get some terser syntax for dealing with objects. One of these is the object property short-hand notation:
+We also get terser syntax when dealing with objects literals. One of these is the object property short-hand notation:
 ```js
 var firstName = 'Alfred',
     lastName  = 'Jenkins'
@@ -200,24 +200,25 @@ computed['foobar'] // Hell world
 
 
 # Rest / Spread Operator
-Used to gather, spread multiple elements in an array or object (Object spread is at stage 3).
+Used to gather or spread multiple elements in an array or object).
 
 - Spreading:
 When ```...``` is used in front of an array it actively spreads the arrays elements one by one.
-  ```js
-  const arr1 = [1,2,3,4]
-  const arr2 = [...ar1] // [1,2,3,4]
-  ```
-  It can also be used to gather up elements together to collect the 'rest' into an array, a common use case is in function params.
-  ```js
-    function foo (x, y,...rest) {
-      // x = 1, y = 2
-      // rest = [3, 4, 5]
-    }
-    foo(1,2,3,4,5)  
-  ```
+```js
+const arr1 = [1,2,3,4]
+const arr2 = [...ar1] // [1,2,3,4]
+```
+It can also be used to gather up elements together to collect the 'rest' into an array, a common use case is in function params.
+```js
+  function foo (x, y,...rest) {
+    // x = 1, y = 2
+    // rest = [3, 4, 5]
+  }
+  foo(1,2,3,4,5)  
+```
+
 - Object Spread
-Similar to array spreading object spread works by taking the keys and values of an object and placing them one by one to the destination object (Note is is not officially in the EcmaScript specification yet, but is at stage2 and requires transpilation):
+Similar to array spreading object spread works by taking the keys and values of an object and placing them both one by one to the destination object. (Note this is not officially in the EcmaScript specification yet, but is at stage2 and requires transpilation):
 ```js
   const user = {
     userId: 321,
@@ -326,4 +327,8 @@ const [first, second, third = 3] = baz()
 function baz() {
   return [1,2]
 }
+
+first // 1
+second // 2
+third // 3
 ```

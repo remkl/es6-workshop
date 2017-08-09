@@ -80,9 +80,9 @@ For more information check out MDN: [import](https://developer.mozilla.org/en-US
 
 
 # Arrow Functions
-The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` in Javascript.
+The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` based programming in Javascript.
 
-Arrow functions by default inherit the surrounding ```this``` context.
+Note: Arrow functions by default inherit the surrounding ```this``` context.
 
 ```js
 
@@ -94,49 +94,26 @@ const person = {
 }
 person.getName() // undefined
 // because 'this' inherits from the surrounding context, which isn't the person object
-// (Javascript is function scoped) but the global window scope, where firstName isn't a property of the global scope, thus undefined.
+// but the global window scope (javascript is function scoped), where firstName isn't a property of the global scope, so we get undefined.
 
-const weather = {
-  currentTemp: 42,
-  updateWeather: () => {
-    setInterval(() => {
-      this.currentTemp = Math.random()
-    }, 3000)
-  }
-}
-weather.updateWeather() // weather.currentTemp will always return 42
-// again because arrow functions inherit 'this from the surrounding scope,
-// even when they are nested', so the call back function tries to set window.currentTemp, which doesn't exist.
-
-const weather = {
-  currentTemp: 42,
-  updateWeather: function() {
-    setInterval(() => {
-      this.currentTemp = Math.random()
-    }, 3000)
+const person = {
+  name: 'Fred',
+  sayName: function() {
+    setTimeout(() => {
+      console.log(this.name)
+    }, 1000)
   }
 }
 
-weather.updateWeather() // returns different value when accessing weather.currentTemp every 3 seconds
-// this works because arrow functions
+person.sayName() // 'Fred' after 1 second
 ```
 
-
-Another gotcha example
-```js
-  const person = {``
-    firstName: 'John',
-    getName: () => {
-      return this.firstName
-    }
-  }
-  person.get() // undefined
-```
-Its important to understand how ```this``` works in Javascript and its dynamic nature to avoid these cases when using arrow functions.
+Its useful to understand ```this``` and its dynamic nature in Javascript to avoid these cases when using arrow functions.
 
 ## A note on 'this' in Javascript
-The value of ```this``` is dynamic in Javascript and always depends on how the function/method is called.
-Every function in Javascript (with the exception of Arrow Functions), while executing has a reference to its current execution context - which is what the ```this``` keyword points to.
+The value of ```this``` is dynamic, always depends on how the function/method is called.
+
+Every function (with the exception of Arrow Functions), while executing, has a reference to its current execution context - which is what the ```this``` keyword points to.
 
 In Javascript the only thing that matters in determining what ```this``` is, is by looking at how the function is called.
 
@@ -146,7 +123,6 @@ Four rules to help understand ```this```:
 2. If a function is called is on a object a preceding dot, the object before that dot is the context.
 3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
 4. ```this``` can be explicitly bound using .call(), .apply() and .bind()
-
 
 # Template Strings
 In ES6 we get a nice syntax for constructing dynamic strings using the ``` ` ``` back-ticks and ``` ${} ``` as a placeholder for variables:

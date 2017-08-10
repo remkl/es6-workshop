@@ -31,7 +31,7 @@ require(['person'], function(person) {
 
 #### ES6 Modules
 
-ES6 modules have two main types of import/export: named and default.
+ES6 modules have two main types of import/export: named and default. All modules in ES6 are ran in "strict mode" by default.
 
 Named exports export single entities from a particular module.
 ```js
@@ -121,7 +121,7 @@ In Javascript the only thing that matters in determining what ```this``` is, is 
 
 Four rules to help understand ```this```:
 
-1. If a function is called in the global scope, the context is the global object.
+1. If a function is called in the global scope, the context is the global object (or undefined in strict mode).
 2. If a function is called is on a object with a preceding dot, the object before that dot is the context.
 3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
 4. ```this``` can be explicitly bound using .call(), .apply() and .bind() for predictability

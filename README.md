@@ -78,6 +78,7 @@ import React, { Component } from 'react'
 (React is the default export, where Component is a named export, both from the same module)
 For more information check out MDN: [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
+Also proposal for dynamic imports [dynamic imports](https://github.com/tc39/proposal-dynamic-import)
 
 # Arrow Functions
 The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` based programming in Javascript.
@@ -120,7 +121,7 @@ In Javascript the only thing that matters in determining what ```this``` is, is 
 Four rules to help understand ```this```:
 
 1. If a function is called in the global scope, the context is the global object.
-2. If a function is called is on a object a preceding dot, the object before that dot is the context.
+2. If a function is called is on a object with a preceding dot, the object before that dot is the context.
 3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
 4. ```this``` can be explicitly bound using .call(), .apply() and .bind()
 
@@ -198,6 +199,7 @@ computed['foobar'] // Hell world
 
 ```
 
+Note that all keys in Javascript objects are strings, any dynamic properties you assign will end up as a string.
 
 # Rest / Spread Operator
 Used to gather or spread multiple elements in an array or object).
@@ -331,4 +333,45 @@ function baz() {
 first // 1
 second // 2
 third // 3
+```
+
+# Classes
+Its important to note that ES6 classes are just syntactic sugar over the prototype-based OO pattern.
+
+It just provides a more declarative form over the existing prototypical OO pattern in Javascript.
+Classes support prototype-based inheritance, super calls, instance and static methods and constructors.
+
+OO Class pattern in ES5
+
+```js
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+Person.prototype.sayName = function() {
+  console.log(this.name)
+}
+Person.prototype.getAge = function() {
+  return this.age
+}
+
+var greg = new Person('greg', 12)
+```
+
+In ES6 the equivalent is
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  sayName() {
+    console.log(this.name)
+  }
+  getAge() {
+    return this.age
+  }
+}
+
+const bob = new Person('bob', 12)
 ```

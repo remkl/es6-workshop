@@ -5,7 +5,7 @@ ES2015 also known as ES6 is a major update to the Javascript language. This repo
 
 For a long time Javascript did not have a module system, something that comes standard in other programming languages like Java and Python.
 
-The lack of a default module system in javascript lead to a number of community-driven solutions:
+This lack of a default module system lead to a number of community-driven solutions:
 
 - IIFE (Immediately Invoked Function Expressions) / Revealing Module pattern
 (Using closures to achieve information hiding.)
@@ -16,7 +16,7 @@ module.exports = function example() {}
 require('custom-module')
 ```
 
-- AMD (Came after CommonJS but intended for the browser)
+- AMD (Came after CommonJS but was intended for the browser)
 ```js
 define('person', function() {
   return { name: 'Cornwallace' }
@@ -66,8 +66,9 @@ You can alias a default export as any other name when importing it.
   }
 
   ...
-  // import.js
+  // import1.js
   import DefaultExport from './export1'
+  // import2.js
   import Example from './export2'
 ```
 
@@ -76,9 +77,9 @@ When importing ES6 modules, you can mix default export and named exports togethe
 import React, { Component } from 'react'
 ```
 (React is the default export, where Component is a named export, both from the same module)
-For more information check out MDN: [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+For more information on the various syntaxes check out MDN: [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
-Also proposal for dynamic imports [dynamic imports](https://github.com/tc39/proposal-dynamic-import)
+There's also a proposal for dynamic imports at stage 3 [dynamic imports](https://github.com/tc39/proposal-dynamic-import)
 
 # Arrow Functions
 The main motivations for including arrow functions into the language were probably for more concise inline functions. And to reduce the overhead/frustrations when using ```this``` based programming in Javascript.
@@ -123,7 +124,7 @@ Four rules to help understand ```this```:
 1. If a function is called in the global scope, the context is the global object.
 2. If a function is called is on a object with a preceding dot, the object before that dot is the context.
 3. When a constructor function style is used, ```this``` refers to the new object that the ```new``` keyword returns.
-4. ```this``` can be explicitly bound using .call(), .apply() and .bind()
+4. ```this``` can be explicitly bound using .call(), .apply() and .bind() for predictability
 
 # Template Strings
 In ES6 we get a nice syntax for constructing dynamic strings using the ``` ` ``` back-ticks and ``` ${} ``` as a placeholder for variables:
